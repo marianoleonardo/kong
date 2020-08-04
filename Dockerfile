@@ -4,6 +4,10 @@ COPY kong.conf /etc/kong/
 
 USER root
 
+RUN apk add --no-cache git
+
+RUN luarocks install kong-plugin-jwt-keycloak
+
 COPY ./plugins/pepkong /custom-plugins/pepkong
 
 WORKDIR /custom-plugins/pepkong
