@@ -9,7 +9,6 @@ return {
     { config = {
         type = "record",
         fields = {
-          { resource_server_id = { type = "string", required = true }, },
           { resource = { type = "string", required = true, default = "Default Resource" }, },
           { scopes = {
             type = "map",
