@@ -54,7 +54,7 @@ local function do_authorization(conf)
     end
 
     -- Invoke PDP/Keycloak
-    local params = build_form_params(conf)
+    local params = build_form_params(conf.resource, conf.scopes[kong.request.get_method()])
     local token_endpoint = jwt.claims.iss .. "/protocol/openid-connect/token"
 
     local response = {}
