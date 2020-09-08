@@ -40,7 +40,7 @@ local function do_authorization(conf)
     local token, err = retrieve_token()
     if err then
         kong.log.err(err)
-        return kong.response.exit(401, {
+        return kong.response.exit(500, {
             message = "An unexpected error occurred"
         })
     end
