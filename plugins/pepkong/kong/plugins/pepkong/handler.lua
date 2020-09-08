@@ -30,6 +30,7 @@ local function retrieve_token()
             return m[1]
         end
     end
+    return kong.response.exit(401, { message = "Missing JWT token" })
 end
 
 -- Use Keycloak authorization services to make authorization decision
@@ -39,7 +40,7 @@ local function do_authorization(conf)
     local token, err = retrieve_token()
     if err then
         kong.log.err(err)
-        return kong.response.exit(500, {
+        return kong.response.exit(401, {
             message = "An unexpected error occurred"
         })
     end
